@@ -23,6 +23,13 @@ namespace IT.CacheRepository
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // use redis to cache infos
+            services.AddDistributedRedisCache(options => {
+                options.Configuration = Configuration.GetConnectionString("Redis");
+                options.InstanceName = "User_";
+            });
+
+            services.AddSession();
             services.AddMvc();
         }
 
