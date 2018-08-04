@@ -19,17 +19,16 @@ namespace IT.CacheRepository.Controllers
 
         // GET api/values
         [HttpGet]
-        public async Task<User> GetOrders(string name)
+        public async Task<User> GetUsers(string name)
         {
             User user = new User();
 
             try
             {
-                if (User.Identity.IsAuthenticated)
-                {
-                    // get user from redis cache
-                    user = await RedisCache.GetObjectAsync<User>(_userCache, name);
 
+                if (!string.IsNullOrEmpty(name))
+                {
+                    user = await RedisCache.GetObjectAsync<User>(_userCache, name);
                 }
             }
             catch (Exception ex)
@@ -48,10 +47,10 @@ namespace IT.CacheRepository.Controllers
 
             try
             {
-                    // get user from redis cache
+                if (!string.IsNullOrEmpty(name))
+                {
                     user = await RedisCache.GetObjectAsync<User>(_userCache, name);
-
-              
+                }
             }
             catch (Exception ex)
             {
@@ -63,14 +62,31 @@ namespace IT.CacheRepository.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public async Task<bool> Post([FromBody]User user)
         {
+            bool result = false;
+            try
+            {
+                if (user != null)
+                {
+                    await RedisCache.SetObjectAsync(_userCache, user.UserName, user);
+
+                    result = true;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return result;
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody]string value)
         {
+
         }
 
         // DELETE api/values/5

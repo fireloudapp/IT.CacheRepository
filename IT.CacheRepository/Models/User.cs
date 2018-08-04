@@ -57,7 +57,7 @@ namespace IT.CacheRepository.Models
         public string Phone { get; set; }
 
         public byte[] DocumentIdentifier_F { get; set; }
-    
+
         public byte[] DocumentIdentifier_R { get; set; }
 
         public byte[] AddressProof { get; set; }
@@ -74,6 +74,7 @@ namespace IT.CacheRepository.Models
 
         public decimal TransactionFees { get; set; }
 
-     }
+        public decimal EodLiquidity { get; set; }
+    }
 
 }
