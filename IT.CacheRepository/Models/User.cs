@@ -52,15 +52,7 @@ namespace IT.CacheRepository.Models
 
         public string Address { get; set; }
 
-        public string JobPosition { get; set; }
-
         public string Phone { get; set; }
-
-        public byte[] DocumentIdentifier_F { get; set; }
-
-        public byte[] DocumentIdentifier_R { get; set; }
-
-        public byte[] AddressProof { get; set; }
 
         public DateTime? CreationDate { get; set; }
 

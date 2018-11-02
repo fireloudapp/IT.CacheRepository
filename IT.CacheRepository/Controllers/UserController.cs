@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
 using IT.CacheRepository.Models;
 
-
 namespace IT.CacheRepository.Controllers
 {
     [Route("api/[controller]")]
