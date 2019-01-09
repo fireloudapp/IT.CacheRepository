@@ -12,26 +12,26 @@ namespace IT.CacheRepository.Models
 
         public enum registrationStatus : byte
         {
-            newUser = 0,
-            regUser = 1,
-            actUser = 2,
+            newUser,
+            regUser,
+            actUser
         }
 
         public enum Level : int
         {
-            standard = 1,
-            premium = 2,
+            standard,
+            premium
         }
 
         public enum Dominio : int
         {
-            shapps = 1
+            shapps
         }
 
         public enum UserType : byte
         {
-            person = 1,
-            company = 2
+            person,
+            company
         }
 
         public long UserID { get; set; }

@@ -12,9 +12,9 @@ namespace IT.CacheRepository.Controllers
     public class UserController : Controller
     {
 
-        private readonly IDistributedCache _userCache;
+        private readonly IDistributedCache _Cache;
 
-        public UserController(IDistributedCache distributedCache) => _userCache = distributedCache;
+        public UserController(IDistributedCache distributedCache) => _Cache = distributedCache;
 
         // GET api/values
         [HttpGet]
@@ -24,10 +24,9 @@ namespace IT.CacheRepository.Controllers
 
             try
             {
-
                 if (!string.IsNullOrEmpty(name))
                 {
-                    user = await RedisCache.GetObjectAsync<User>(_userCache, name);
+                    user = await RedisCache.GetObjectAsync<User>(_Cache, name);
                 }
             }
             catch (Exception ex)
@@ -48,7 +47,7 @@ namespace IT.CacheRepository.Controllers
             {
                 if (!string.IsNullOrEmpty(name))
                 {
-                    user = await RedisCache.GetObjectAsync<User>(_userCache, name);
+                    user = await RedisCache.GetObjectAsync<User>(_Cache, name);
                 }
             }
             catch (Exception ex)
@@ -60,7 +59,7 @@ namespace IT.CacheRepository.Controllers
         }
 
         // POST api/values
-        [HttpPost]
+        HttpPost][
         public async Task<bool> Post([FromBody]User user)
         {
             bool result = false;
@@ -68,7 +67,7 @@ namespace IT.CacheRepository.Controllers
             {
                 if (user != null)
                 {
-                    await RedisCache.SetObjectAsync(_userCache, user.UserName, user);
+                    await RedisCache.SetObjectAsync(_Cache, user.UserName, user);
 
                     result = true;
                 }

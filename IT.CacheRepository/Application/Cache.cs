@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Caching.Distributed;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using System;
 
 namespace IT.CacheRepository
 {
@@ -22,11 +21,6 @@ namespace IT.CacheRepository
         {
             var value = await cache.GetStringAsync(key);
             return value == null ? false : true;
-        }
-
-        internal static object SetObjectAsync<T>(IDistributedCache userCache, T user)
-        {
-            throw new NotImplementedException();
         }
     }
 
