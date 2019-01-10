@@ -3,8 +3,8 @@
 namespace IT.CacheRepository.Models
 {
     public class Bank
-  {
-         public long BankAccountID { get; set; }
+    {
+        public long BankAccountID { get; set; }
 
         public string Name { get; set; }
      

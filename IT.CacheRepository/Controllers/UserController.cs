@@ -59,7 +59,7 @@ namespace IT.CacheRepository.Controllers
         }
 
         // POST api/values
-        HttpPost][
+        [HttpPost]
         public async Task<bool> Post([FromBody]User user)
         {
             bool result = false;
